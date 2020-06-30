@@ -115,12 +115,14 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         //「○○に行きたい」の○○を取得する
                         String mapText = voiceText.substring(0, mapM.start());
+                        // URIに対応するためエンコードを行う
+                        String mapTextEncode = URLEncoder.encode(mapText, "UTF-8");
 
                         String trafficMode = "w"; // 交通手段（徒歩）
 
                         // GoogleMapを起動させる
-                        // Uri uri = Uri.parse("geo:0.0?q=" + URLEncoder.encode(mapText, "UTF-8")); //ランドマーク検索
-                        Uri uri = Uri.parse("google.navigation:q=" + URLEncoder.encode(mapText, "UTF-8") + "&mode="+trafficMode); //道案内
+                        // Uri uri = Uri.parse("geo:0.0?q=" + mapTextEncode); //ランドマーク検索
+                        Uri uri = Uri.parse("google.navigation:q=" + mapTextEncode + "&mode="+trafficMode); //道案内
                         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                         intent.setPackage("com.google.android.apps.maps");
                         startActivity(intent);
