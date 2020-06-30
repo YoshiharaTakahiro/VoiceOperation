@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">音声操作アプリ</string>
+    <string-array name="traffic_list">
+        <item>車</item>
+        <item>自転車</item>
+        <item>徒歩</item>
+    </string-array>
+</resources>
